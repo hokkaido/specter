@@ -2,9 +2,11 @@ package container
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
 	"github.com/samalba/dockerclient"
+	"html"
 	"log"
 	"net/http"
 )
@@ -19,6 +21,11 @@ func getDockerClient(r *http.Request) dockerclient.Client {
 func RegisterRoutes(r *mux.Router) {
 	r.HandleFunc("/api/containers", list).Methods("GET")
 	r.HandleFunc("/api/containers/{id}", inspect).Methods("GET")
+}
+
+func hello(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+
 }
 
 func kill(w http.ResponseWriter, r *http.Request) {
