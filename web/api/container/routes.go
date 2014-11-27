@@ -21,6 +21,7 @@ func getDockerClient(r *http.Request) dockerclient.Client {
 func RegisterRoutes(r *mux.Router) {
 	r.HandleFunc("/api/containers", list).Methods("GET")
 	r.HandleFunc("/api/containers/{id}", inspect).Methods("GET")
+	r.HandleFunc("/api/hello", hello).Methods("GET")
 }
 
 func hello(w http.ResponseWriter, r *http.Request) {
