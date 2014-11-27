@@ -26,12 +26,10 @@ func RegisterRoutes(r *mux.Router) {
 
 func hello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-
 }
 
 func kill(w http.ResponseWriter, r *http.Request) {
 	return
-
 }
 
 func inspect(w http.ResponseWriter, r *http.Request) {

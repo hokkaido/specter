@@ -11,7 +11,7 @@ type ApiMiddleware struct {
 }
 
 func NewApiMiddleware(dockerAddr string) *ApiMiddleware {
-	docker, _ := dockerclient.NewDockerClient(dockerAddr, nil)
+	docker, err := dockerclient.NewDockerClient(dockerAddr, nil)
 	if err != nil {
 		return nil
 	}
