@@ -19,7 +19,7 @@ func init() {
 
 func main() {
 
-	if err := web.ListenAndServe(listenAddr); err != nil {
+	if err := web.ListenAndServe(listenAddr, dockerAddr); err != nil {
 		logger.Fatal(err)
 	}
 

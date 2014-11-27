@@ -2,17 +2,16 @@ package web
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/hokkaido/specter/web/container"
+	"github.com/hokkaido/specter/web/api"
 	"net/http"
 )
 
-func ListenAndServe(addr string) error {
+func ListenAndServe(listenAddr string, dockerAddr string) error {
 	mainRouter := mux.NewRouter()
 
-	apiRouter := mainRouter.PathPrefix("/api").Subrouter()
-	container.RegisterRoutes(apiRouter)
+	api.RegisterRoutes(mainRouter, dockerAddr)
 
 	http.Handle("/", mainRouter)
 
-	return http.ListenAndServe(addr, mainRouter)
+	return http.ListenAndServe(listenAddr, mainRouter)
 }

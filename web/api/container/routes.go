@@ -10,12 +10,11 @@ import (
 )
 
 func getDockerClient(r *http.Request) dockerclient.Client {
-    if rv := context.Get(r, "dockerclient"); rv != nil {
-        return rv.(dockerclient.Client)
-    }
-    return nil
+	if rv := context.Get(r, "dockerclient"); rv != nil {
+		return rv.(dockerclient.Client)
+	}
+	return nil
 }
-
 
 func RegisterRoutes(r *mux.Router) {
 	r.HandleFunc("/containers", list).Methods("GET")
@@ -37,13 +36,13 @@ func inspect(w http.ResponseWriter, r *http.Request) {
 	}
 
 	js, err := json.Marshal(container)
-  	if err != nil {
-    	http.Error(w, err.Error(), http.StatusInternalServerError)
-    	return
-  	}
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
-  	w.Header().Set("Content-Type", "application/json")
-  	w.Write(js)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
 }
 
 func list(w http.ResponseWriter, r *http.Request) {
@@ -52,15 +51,15 @@ func list(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
-	js, err := json.Marshal(containers)
-  	if err != nil {
-    	http.Error(w, err.Error(), http.StatusInternalServerError)
-    	return
-  	}
 
-  	w.Header().Set("Content-Type", "application/json")
-  	w.Write(js)
+	js, err := json.Marshal(containers)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
 }
 
 func restart(w http.ResponseWriter, r *http.Request) {
