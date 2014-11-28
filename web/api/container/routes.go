@@ -13,8 +13,10 @@ import (
 
 func getDockerClient(r *http.Request) dockerclient.Client {
 	if rv := context.Get(r, "dockerclient"); rv != nil {
+		fmt.Printf("omg")
 		return rv.(dockerclient.Client)
 	}
+	fmt.Printf("so nil")
 	return nil
 }
 

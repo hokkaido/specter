@@ -14,7 +14,7 @@ var (
 
 func init() {
 	flag.StringVar(&listenAddr, "listen", ":8080", "listen address")
-	flag.StringVar(&dockerAddr, "docker", "unix:///tmp/docker.sock", "docker address")
+	flag.StringVar(&dockerAddr, "docker", "unix:///var/run/docker.sock", "docker address")
 }
 
 func main() {

@@ -1,13 +1,14 @@
 package api
 
 import (
+	"fmt"
 	"github.com/gorilla/context"
 	"github.com/samalba/dockerclient"
 	"net/http"
 )
 
 type ApiMiddleware struct {
-	dockerClient *dockerclient.DockerClient
+	dockerClient dockerclient.Client
 }
 
 func NewApiMiddleware(dockerAddr string) *ApiMiddleware {
@@ -15,10 +16,13 @@ func NewApiMiddleware(dockerAddr string) *ApiMiddleware {
 	if err != nil {
 		return nil
 	}
-	return &ApiMiddleware{docker}
+	return &ApiMiddleware{dockerClient: docker}
 }
 
 func (l *ApiMiddleware) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	fmt.Printf("setting context")
 	context.Set(r, "dockerclient", l.dockerClient)
-	next(w, r)
+	if next != nil {
+		next(w, r)
+	}
 }
