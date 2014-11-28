@@ -9,7 +9,7 @@ import (
 func ListenAndServe(listenAddr string, dockerAddr string) error {
 	mainMux := http.NewServeMux()
 
-	mainMux.Handle("/", http.FileServer(http.Dir("static")))
+	mainMux.Handle("/", http.FileServer(http.Dir("web/static")))
 	api.RegisterRoutes(mainMux, dockerAddr)
 
 	return http.ListenAndServe(listenAddr, context.ClearHandler(mainMux))

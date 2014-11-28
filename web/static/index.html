@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+</head>
+    <body>
+
+    <div>
+        <div data-ng-include="'app/layout/shell.html'"></div>
+        <div id="splash-page" data-ng-show="false">
+            <div class="page-splash">
+                <div class="page-splash-message">
+                    Angular Modular Demo
+                </div>
+                <div class="progress progress-striped active page-progress-bar">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/hammerjs/hammer.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+
+    <!-- inject:js -->
+    <!-- Bootstrapping -->
+    <script src="/app/app.module.js"></script>
+
+    <!-- core module -->
+    <script src="/app/core/core.module.js"></script>
+    <script src="/app/core/constants.js"></script>
+    <script src="/app/core/config.js"></script>
+    <script src="/app/core/apiservice.js"></script>
+
+    <!-- layout -->
+    <script src="/app/layout/layout.module.js"></script>
+    <script src="/app/layout/shell.js"></script>
+
+    <!-- dashboard -->
+    <script src="/app/dashboard/dashboard.module.js"></script>
+    <script src="/app/dashboard/config.route.js"></script>
+    <script src="/app/dashboard/dashboard.controller.js"></script>
+
+    <!--containers -->
+    <script src="/app/containers/containers.module.js"></script>
+    <script src="/app/containers/config.route.js"></script>
+    <script src="/app/containers/containers.js"></script>
+    <!-- endinject -->
+</body>
+</html>
