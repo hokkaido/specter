@@ -15,7 +15,7 @@ func RegisterRoutes(r *http.ServeMux, dockerAddr string) {
 	apiMiddleware := NewApiMiddleware(dockerAddr)
 	apiWithMiddleware.Use(apiMiddleware)
 	apiWithMiddleware.UseHandler(apiRouter)
-	r.Handle("/api/", apiRouter)
+	r.Handle("/api/", apiWithMiddleware)
 	/*r.Handle("/api/", negroni.New(
 		NewApiMiddleware(dockerAddr),
 		negroni.Wrap(apiRouter),

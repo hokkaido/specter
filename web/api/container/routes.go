@@ -13,10 +13,8 @@ import (
 
 func getDockerClient(r *http.Request) dockerclient.Client {
 	if rv := context.Get(r, "dockerclient"); rv != nil {
-		fmt.Printf("omg")
 		return rv.(dockerclient.Client)
 	}
-	fmt.Printf("so nil")
 	return nil
 }
 
@@ -55,6 +53,10 @@ func inspect(w http.ResponseWriter, r *http.Request) {
 
 func list(w http.ResponseWriter, r *http.Request) {
 	docker := getDockerClient(r)
+	if docker == nil {
+		http.Error(w, "We have no docker client", http.StatusInternalServerError)
+		return
+	}
 	containers, err := docker.ListContainers(true, true, "")
 	if err != nil {
 		log.Fatal(err)

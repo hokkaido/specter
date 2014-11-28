@@ -20,7 +20,6 @@ func NewApiMiddleware(dockerAddr string) *ApiMiddleware {
 }
 
 func (l *ApiMiddleware) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
-	fmt.Printf("setting context")
 	context.Set(r, "dockerclient", l.dockerClient)
 	if next != nil {
 		next(w, r)
