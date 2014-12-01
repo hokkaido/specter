@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('shell.layout')
+        .module('specter.layout')
         .controller('Shell', Shell);
 
     Shell.$inject = ['$timeout', 'config', 'logger'];

@@ -6,7 +6,7 @@
         .controller('Containers', Containers);
 
     /* @ngInject */
-    function Avengers(dataservice, logger) {
+    function Containers(dataservice, logger) {
         /*jshint validthis: true */
         var vm = this;
         vm.containers = [];

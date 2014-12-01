@@ -1,5 +1,5 @@
 (function() {
     'use strict';
 
-    angular.module('app.containers', []);
+    angular.module('specter.containers', []);
 })();
